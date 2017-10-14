@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
-
+import { ConfigurationPage } from '../configuration/configuration';
+import { VocalesPage } from '../vocales/vocales';
 /**
  * Generated class for the TiposPage page.
  *
@@ -21,5 +22,10 @@ export class TiposPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TiposPage');
   }
-
+  goToConf(){
+    this.navCtrl.push(ConfigurationPage);
+  }
+  goToVocal(){
+    this.navCtrl.push(VocalesPage);
+  }
 }

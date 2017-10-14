@@ -1,0 +1,32 @@
+page-vocales {
+    .vocal-bg{
+        background-image: url("../assets/img/imagen5.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .vocal-title{
+        font-family: KGHAPPY;
+        color: #4a3da7;
+        font-size: 2.4em;
+    }
+    .vocal-main{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+    }
+    .vocal-opc{
+        display: flex;
+        flex-direction: column;
+        flex:1;
+        justify-content: center;
+    }
+    .vocal-boton{
+        background: rgba(66,133,244,0.15%);
+        border-radius: 20px;
+        font-family: Sketch Nice;
+        color: #1F0AB0;
+        font-size: 4em;
+        height: 90px;
+    }
+}

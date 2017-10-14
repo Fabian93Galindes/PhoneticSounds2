@@ -11,7 +11,10 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { TiposPage } from '../pages/tipos/tipos';
-
+import { ConfigurationPage} from '../pages/configuration/configuration';
+import { EstadisticasPage } from '../pages/estadisticas/estadisticas';
+import { VocalesPage} from '../pages/vocales/vocales';
+import { VocalAPage} from '../pages/vocal-a/vocal-a';
 import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
 
 @NgModule({
@@ -20,7 +23,11 @@ import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
     HomePage,
     LoginPage,
     RegistroPage,
-    TiposPage
+    TiposPage,
+    ConfigurationPage,
+    EstadisticasPage,
+    VocalAPage,
+    VocalesPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,11 @@ import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
     HomePage,
     LoginPage,
     RegistroPage,
-    TiposPage
+    TiposPage,
+    ConfigurationPage,
+    EstadisticasPage,
+    VocalAPage,
+    VocalesPage
   ],
   providers: [
     StatusBar,

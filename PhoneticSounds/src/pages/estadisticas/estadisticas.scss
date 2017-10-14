@@ -1,0 +1,30 @@
+page-estadisticas {
+    .esta-title{
+        font-family: KGRedHands;
+        font-size: 1.2em;
+    }
+    .esta-bg{
+        background-image: url("../assets/img/imagen5.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .esta-col1{
+        background: #4285f4;
+        font-family: KGRedHands;
+        font-size: 1.3em;
+        color: white;
+        height: 50px;
+        border-radius: 7px;
+        padding-top: 10px;
+    }
+    .esta-col2{
+        background: rgba(66,133,244,0.3%);
+        font-family: KGRedHands;
+        font-size: 1em;
+        color:#4a3da7;
+        height: 50px;
+        border-radius: 7px;
+        padding-top: 10px;
+    }
+}
