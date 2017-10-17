@@ -9,4 +9,45 @@ page-vocal-a {
         background-position: center;
         background-size: cover;
     }
+    .a-opc{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: center;
+    }
+    .a-boton{
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
+    .a-botonA{
+        background-image: url("../assets/img/avion.png");
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
+    .a-botonE{
+        background-image: url("../assets/img/elefante.png");
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
+    .a-botonF{
+        background-image: url("../assets/img/fantasma.png");
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
+    .a-botonM{
+        background-image: url("../assets/img/mono.png");
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
+    .a-botonO{
+        background-image: url("../assets/img/oso.png");
+        border-radius: 20px;
+        color: #1F0AB0;
+        height: 90px;
+    }
 }
