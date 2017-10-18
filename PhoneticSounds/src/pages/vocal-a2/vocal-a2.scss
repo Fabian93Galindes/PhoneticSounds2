@@ -1,0 +1,27 @@
+page-vocal-a2 {
+    .a2-title{
+        font-family: KGRedHands;
+        font-size: 1.2em;
+    }
+    .a2-bg{
+        background-image: url("../assets/img/imagen2.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .a2-opc{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: center;
+    }
+    .a2-boton{
+        font-family: Sketch Nice;
+        font-size: 4em;
+        border-radius: 20px;
+        background: #1F0AB0;
+        color: white;
+        height: 90px;
+    }
+    
+}

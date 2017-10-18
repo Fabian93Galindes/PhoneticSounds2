@@ -12,7 +12,7 @@ import { TiposPage } from '../pages/tipos/tipos';
 })
 export class MyApp {
   rootPage:any ;
-
+  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               public storage:Storage) {
     platform.ready().then(() => {
@@ -23,5 +23,12 @@ export class MyApp {
       this.storage.get("logged").then(value=>this.rootPage = value? TiposPage: LoginPage);
     });
   }
+  
 }
+
+
+
+
+
+
 

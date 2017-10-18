@@ -1,0 +1,15 @@
+page-vocal-a4 {
+    .a4-bg{
+        background-image: url("../assets/img/imagen2.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .a4-opc{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: center;
+    }
+
+}

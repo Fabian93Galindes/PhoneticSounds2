@@ -10,31 +10,41 @@
         <ion-icon name="close-circle"></ion-icon>
       </button>
     </ion-buttons>
+    <audio id="error">
+      <source src="./assets/song/ERROR01.mp3" type="audio/mpeg">
+    </audio> 
+    <audio id="celebra">
+      <source src="./assets/song/CELEBRACION.mp3" type="audio/mpeg">
+    </audio> 
+    <audio id="bien">
+        <source src="./assets/song/BIEN01.mp3" type="audio/mpeg">
+      </audio> 
     <div class="a-opc">
+      
     <ion-row >
-      <button ion-col col-3 class="a-botonO" margin-top></button>
-      <button ion-col col-3 class="a-botonA" margin-top></button>
-      <button ion-col col-3 class="a-botonO" margin-top></button>
-      <button ion-col col-3 class="a-botonF" margin-top></button>
+      <button ion-col col-3 class="a-botonO" margin-top (click)="error()"></button>
+      <button ion-col col-3 class="a-botonA" margin-top (click)="bien()"></button>
+      <button ion-col col-3 class="a-botonO" margin-top (click)="error()"></button>
+      <button ion-col col-3 class="a-botonF" margin-top (click)="error()"></button>
       
     </ion-row>
     <ion-row >
-        <button ion-col col-3 class="a-botonM" margin-top></button>
-        <button ion-col col-3 class="a-botonA" margin-top></button>
-        <button ion-col col-3 class="a-botonF" margin-top></button>
-        <button ion-col col-3 class="a-botonM" margin-top></button>
+        <button ion-col col-3 class="a-botonM" margin-top (click)="error()"></button>
+        <button ion-col col-3 class="a-botonA" margin-top (click)="bien1()"></button>
+        <button ion-col col-3 class="a-botonF" margin-top (click)="error()"></button>
+        <button ion-col col-3 class="a-botonM" margin-top (click)="error()"></button>
 
       </ion-row>
       <ion-row >
-          <button ion-col col-3 class="a-botonO" margin-top></button>
-          <button ion-col col-3 class="a-botonF" margin-top></button>
-          <button ion-col col-3 class="a-botonM" margin-top></button>
-          <button ion-col col-3 class="a-botonA" margin-top></button>
+          <button ion-col col-3 class="a-botonO" margin-top (click)="error()"></button>
+          <button ion-col col-3 class="a-botonF" margin-top (click)="error()"></button>
+          <button ion-col col-3 class="a-botonM" margin-top (click)="error()"></button>
+          <button ion-col col-3 class="a-botonA" margin-top (click)="bien2()"></button>
    
         </ion-row>
     </div>
     <ion-buttons end>
-        <button ion-button icon-only color="secondary" (click)="goToTipos()">
+        <button ion-button icon-only color="secondary" [disabled]="!listo" (click)="goToA2()">
           <ion-icon name="arrow-round-forward"></ion-icon>
         </button>
       </ion-buttons>

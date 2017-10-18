@@ -16,6 +16,9 @@ import { EstadisticasPage } from '../pages/estadisticas/estadisticas';
 import { VocalesPage} from '../pages/vocales/vocales';
 import { VocalAPage} from '../pages/vocal-a/vocal-a';
 import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
+import { VocalA2Page } from '../pages/vocal-a2/vocal-a2';
+import { VocalA3Page } from '../pages/vocal-a3/vocal-a3';
+import { VocalA4Page } from '../pages/vocal-a4/vocal-a4';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
     ConfigurationPage,
     EstadisticasPage,
     VocalAPage,
-    VocalesPage
+    VocalesPage,
+    VocalA2Page,
+    VocalA3Page,
+    VocalA4Page
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,10 @@ import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
     ConfigurationPage,
     EstadisticasPage,
     VocalAPage,
-    VocalesPage
+    VocalesPage,
+    VocalA2Page,
+    VocalA3Page,
+    VocalA4Page
   ],
   providers: [
     StatusBar,

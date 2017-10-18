@@ -1,0 +1,71 @@
+page-vocal-a3 {
+    .a3-bg{
+        background-image: url("../assets/img/paisaje-cerro.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .a3-opc{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: center;
+    }
+    .a3-botonA{
+        background-image: url("../assets/img/avion.png");
+        border-radius: 20px;
+        height: 60px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .a3-botonA1{
+        background-image: url("../assets/img/avion.png");
+        border-radius: 20px;
+        height: 35px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .a3-botonE{
+        background-image: url("../assets/img/elefante.png");
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 60px;
+    }
+    .a3-botonF{
+        background-image: url("../assets/img/fantasma.png");
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 35px;
+    }
+    .a3-botonM{
+        background-image: url("../assets/img/mono.png");
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 60px;
+    }
+    .a3-botonO{
+        background-image: url("../assets/img/oso.png");
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 60px;
+    }
+    .a3-botonO1{
+        background-image: url("../assets/img/oso.png");
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 35px;
+    }
+    
+}
