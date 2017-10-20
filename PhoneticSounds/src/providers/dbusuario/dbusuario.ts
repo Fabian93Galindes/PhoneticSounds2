@@ -11,8 +11,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class DbusuarioProvider {
 
-  url = "http://localhost:3000/api/users";
-  url2 = "http://localhost:3000/api/users/login";
+  url = "http://192.168.1.10:3000/api/users";
+  url2 = "http://192.168.1.10:3000/api/users/login";
 
   constructor(public http: HttpClient) {
     

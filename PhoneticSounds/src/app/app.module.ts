@@ -19,6 +19,9 @@ import { DbusuarioProvider } from '../providers/dbusuario/dbusuario';
 import { VocalA2Page } from '../pages/vocal-a2/vocal-a2';
 import { VocalA3Page } from '../pages/vocal-a3/vocal-a3';
 import { VocalA4Page } from '../pages/vocal-a4/vocal-a4';
+import { DatabaseConnectionProvider } from '../providers/database-connection/database-connection';
+import { EstadisticasDaoProvider } from '../providers/estadisticas-dao/estadisticas-dao';
+import { EstadisticasServicioProvider } from '../providers/estadisticas-servicio/estadisticas-servicio';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { VocalA4Page } from '../pages/vocal-a4/vocal-a4';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DbusuarioProvider
+    DbusuarioProvider,
+    DatabaseConnectionProvider,
+    EstadisticasDaoProvider,
+    EstadisticasServicioProvider
   ]
 })
 export class AppModule {}

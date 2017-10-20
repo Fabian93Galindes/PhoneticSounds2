@@ -4,6 +4,9 @@ import { DbusuarioProvider, Usuariodb } from '../../providers/dbusuario/dbusuari
 import { RegistroPage } from '../registro/registro';
 import { TiposPage } from '../tipos/tipos';
 import { Storage} from '@ionic/storage';
+import { Estadisticadb } from '../../providers/estadisticas-dao/estadisticadb';
+import { EstadisticasDaoProvider } from '../../providers/estadisticas-dao/estadisticas-dao';
+import { Estadistica,EstadisticasServicioProvider} from '../../providers/estadisticas-servicio/estadisticas-servicio'; 
 
 /**
  * Generated class for the LoginPage page.
@@ -18,13 +21,23 @@ import { Storage} from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  public estadi : Estadistica[] = []; 
+  public estadi1: Estadistica;
   usuario : Usuariodb;
+  estadb : Estadisticadb;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public service: DbusuarioProvider, public toastCtrl: ToastController,
-    public storage: Storage ) {
+    public storage: Storage,
+    public dao : EstadisticasDaoProvider,
+    public service1: EstadisticasServicioProvider
+  
+  
+    ) {
       this.usuario= new Usuariodb();
+      this.estadi1 = new Estadistica();
   }
 
+  
   login(){
     this.service.login(this.usuario)
     .subscribe(res=>{
@@ -34,7 +47,11 @@ export class LoginPage {
         this.showToast("Cargando...");
         this.storage.set('user',this.usuario.nombre);
         this.storage.set("logged", true);
-        this.navCtrl.setRoot(TiposPage);
+        
+        this.estadi1.nombre= this.usuario.nombre;
+        this.loadEstadisticas();
+
+        
       }else{
         console.log(res.success);
         this.showToast("Usuario o contraseña erronea");
@@ -55,6 +72,27 @@ export class LoginPage {
     toast.present();  
   }
 
+  loadEstadisticas(){
+    this.service1.getByOne(this.estadi1)
+    .subscribe(res=>{
+      if(res.success){
+        this.estadi = res.user;
+        for (var i = 0; i < this.estadi.length; i++) {
+            this.estadb = new Estadisticadb();
+            this.estadb.nombre = this.estadi[i].nombre;
+            this.estadb.fecha = this.estadi[i].fecha;
+            this.estadb.letra = this.estadi[i].letra;
+            this.estadb.nivel = this.estadi[i].nivel;
+            this.dao.insert(this.estadb);
+            this.navCtrl.setRoot(TiposPage);
+        }
+      }else{
+        console.log(res.success);
+        this.showToast("no se cargaron estadisticas");
+      }
+
+    });
+  }
 
 
 }

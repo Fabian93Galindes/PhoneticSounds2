@@ -7,8 +7,8 @@
 
 <ion-content padding class="login-bg">
   <div class="login-main">
-    <form>
-    <div class="login-form" margin-top>
+  <form class="login-form" margin-top>
+    <div >
       <ion-row>
         <ion-col col-12>
           <ion-item color="itemLight">
@@ -26,12 +26,15 @@
 
       </ion-row>
     </div>
-    </form>
+  </form>
+  </div>
+    <div margin-top>
     <ion-row>
       <button ion-col col-6 offset-3 ion-button block class="login-but" color="secondary" (click)="login()">Entrar</button>
     </ion-row>
     <ion-row>
       <button ion-col col-6 offset-3 ion-button clear class="login-but" margin-top color="secondary" (click)="goToRegistro()">Registrar</button>
     </ion-row>
-  </div>
+    </div>
+  
 </ion-content>

@@ -38,7 +38,19 @@ router.post("/",(req, res, next)=>{
       res.send({success: false});
   });
 });
-
+router.post("/user",(req, res, next) => {
+    let body = req.body;
+    req.collection.find({nombre: body.nombre}) 
+    .toArray().then(result =>{
+            if(result){
+                let usr = result;
+                res.send({success: true, user: usr});
+            }else{
+                res.send({success: false});
+            }
+        
+    });
+});
 router.put("/:id", (req, res, next) => {
     let body = req.body;
     let id = new ObjectID(req.params.id);

@@ -12,39 +12,40 @@
     </ion-buttons>
     <div class="a3-opc">
     <ion-row >
-      <button ion-col col-2 class="a3-botonO" margin-top></button>
-      <button ion-col col-2 offset-6 class="a3-botonM" margin-top></button>
+      <button ion-col col-2 class="a3-botonO" margin-top [disabled]="listo" (click)="error()"></button>
+      <button ion-col col-2 offset-6 class="a3-botonM" margin-top [disabled]="listo" (click)="error()"></button>
       
       
     </ion-row>
     <ion-row >
         
-        <button ion-col col-1 offse-6 class="a3-botonA1" margin-top></button>
+        <button ion-col col-1 offse-6 class="a3-botonA1" margin-top [disabled]="punto" (click)="bien()"></button>
 
       </ion-row>
       <ion-row >
-          <button ion-col col-1 class="a3-botonO1" margin-top></button>
-          <button ion-col col-2 offset-8 class="a3-botonA" margin-top></button>
+          <button ion-col col-1 class="a3-botonO1" margin-top [disabled]="listo" (click)="error()"></button>
+          <button ion-col col-2 offset-8 class="a3-botonA" margin-top [disabled]="punto1" (click)="bien1()"></button>
    
         </ion-row>
         <ion-row >
-          <button ion-col col-1 offset-5 class="a3-botonF" margin-top></button>
-          <button ion-col col-1 offset-2 class="a3-botonF" margin-top></button>
+          <button ion-col col-1 offset-5 class="a3-botonF" margin-top [disabled]="listo" (click)="error()"></button>
+          <button ion-col col-1 offset-2 class="a3-botonF" margin-top [disabled]="listo" (click)="error()"></button>
    
         </ion-row>
         <ion-row >
-          <button ion-col col-2 class="a3-botonA" margin-top></button>
-          <button ion-col col-1 offset-7 class="a3-botonA1" margin-top></button>
+          <button ion-col col-2 class="a3-botonA" margin-top [disabled]="punto2" (click)="bien2()"></button>
+          <button ion-col col-1 offset-7 class="a3-botonA1" margin-top [disabled]="punto3" (click)="bien3()"></button>
    
         </ion-row>
         <ion-row >
           
-          <button ion-col col-2 offse-7 class="a3-botonE" margin-top></button>
+          <button ion-col col-2 offse-3 class="a3-botonE" margin-top [disabled]="listo" (click)="error()"></button>
+          <button ion-col col-2 offse-5 class="a3-botonM" margin-top [disabled]="listo" (click)="error()"></button>
   
         </ion-row>
     </div>
     <ion-buttons end>
-        <button ion-button icon-only color="secondary" (click)="goToA4()">
+        <button ion-button icon-only color="secondary" [disabled]="!listo" (click)="goToA4()">
           <ion-icon name="arrow-round-forward"></ion-icon>
         </button>
       </ion-buttons>

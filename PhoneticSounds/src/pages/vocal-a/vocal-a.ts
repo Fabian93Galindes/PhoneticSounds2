@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { TiposPage } from '../tipos/tipos';
 import { VocalA2Page } from '../vocal-a2/vocal-a2';
+import { EstadisticasDaoProvider } from '../../providers/estadisticas-dao/estadisticas-dao'; 
+import { Estadisticadb } from '../../providers/estadisticas-dao/estadisticadb';
+import { Storage } from '@ionic/storage';
+import { Estadistica,EstadisticasServicioProvider} from '../../providers/estadisticas-servicio/estadisticas-servicio';
 
 /**
  * Generated class for the VocalAPage page.
@@ -26,19 +30,29 @@ export class VocalAPage {
   public punto : boolean;
   public punto1 : boolean;
   public punto2 : boolean;
+  public estadis :Estadisticadb;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private vibration : Vibration) {
+    public dao: EstadisticasDaoProvider,
+    public storage: Storage,
+    public service: EstadisticasServicioProvider,
+    public toastCtrl: ToastController,
+    private vibration : Vibration
+    ) {
       this.cont = 0;
       this.listo = false;
       this.punto = false;
       this.punto1 = false;
       this.punto2 = false;
+      this.estadis = new Estadisticadb();
 
     }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VocalAPage');
-  }
+    ionViewDidLoad() {
+      this.storage.get('user').then(val =>{
+        this.estadis.nombre = val;
+      });
+    }
 
   ngOnInit(){
     this.playBien = new Audio();
@@ -58,12 +72,15 @@ export class VocalAPage {
     this.punto = false;
     this.punto1 = false;
     this.punto2 = false;
+    this.cont = 0;
+    console.log("puntos");
   }
   bien(){
-    if(this.cont<3){
+    if(this.cont<2){
       this.playBien.play();
       this.vibration.vibrate(500);
       this.punto = true;
+      this.cont = this.cont + 1;
     }else{
       this.playCelebracion.play();
       this.vibration.vibrate([500,250,500,250,500]);
@@ -72,10 +89,11 @@ export class VocalAPage {
     }
   }
   bien1(){
-    if(this.cont<3){
+    if(this.cont<2){
       this.playBien.play();
       this.vibration.vibrate(500);
       this.punto1 = true;
+      this.cont = this.cont + 1;
     }else{
       this.playCelebracion.play();
       this.vibration.vibrate([500,250,500,250,500]);
@@ -84,10 +102,13 @@ export class VocalAPage {
     }
   }
   bien2(){
-    if(this.cont<3){
+    if(this.cont<2){
       this.playBien.play();
       this.vibration.vibrate(500);
+      
       this.punto2 = true;
+      this.cont = this.cont + 1;
+      console.log("puntos" + this.cont);
     }else{
       this.playCelebracion.play();
       this.vibration.vibrate([500,250,500,250,500]);
@@ -97,6 +118,35 @@ export class VocalAPage {
   }
 
   goToA2(){
-    this.navCtrl.setRoot(VocalA2Page);
+     
+    this.estadis.fecha = new Date();
+    this.estadis.letra ="A";
+    this.estadis.nivel= 1;
+    
+
+    this.service.insert(this.estadis)
+    .subscribe(res=>{
+      if(res.success){
+        console.log(res.success);
+        this.showToast("Partida guardada");
+        this.dao.insert(this.estadis)
+        .then(res=> this.navCtrl.setRoot(VocalA2Page));
+      }else{
+        console.log(res.success);
+        this.showToast("no se guardo la partida");
+        this.dao.insert(this.estadis)
+        .then(res=> this.navCtrl.setRoot(VocalA2Page));
+        
+       }
+    
+    });
+    
+  }
+  showToast(msg: string){
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();  
   }
 }

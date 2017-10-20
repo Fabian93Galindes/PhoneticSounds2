@@ -12,29 +12,29 @@
     </ion-buttons>
     <div class="a2-opc">
     <ion-row >
-      <button ion-col col-3 class="a2-boton" margin-top>a</button>
-      <button ion-col col-3 class="a2-boton" margin-top>i</button>
-      <button ion-col col-3 class="a2-boton" margin-top>o</button>
-      <button ion-col col-3 class="a2-boton" margin-top>e</button>
+      <button ion-col col-3 class="a2-boton" margin-top [disabled]="punto" (click)="bien()">a</button>
+      <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">i</button>
+      <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">o</button>
+      <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">e</button>
       
     </ion-row>
     <ion-row >
-        <button ion-col col-3 class="a2-boton" margin-top>u</button>
-        <button ion-col col-3 class="a2-boton" margin-top>e</button>
-        <button ion-col col-3 class="a2-boton" margin-top>a</button>
-        <button ion-col col-3 class="a2-boton" margin-top>i</button>
+        <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">u</button>
+        <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">e</button>
+        <button ion-col col-3 class="a2-boton" margin-top [disabled]="punto1" (click)="bien1()">a</button>
+        <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">i</button>
 
       </ion-row>
       <ion-row >
-          <button ion-col col-3 class="a2-boton" margin-top>u</button>
-          <button ion-col col-3 class="a2-boton" margin-top>a</button>
-          <button ion-col col-3 class="a2-boton" margin-top>o</button>
-          <button ion-col col-3 class="a2-boton" margin-top>e</button>
+          <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">u</button>
+          <button ion-col col-3 class="a2-boton" margin-top [disabled]="punto2" (click)="bien2()">a</button>
+          <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">o</button>
+          <button ion-col col-3 class="a2-boton" margin-top [disabled]="listo" (click)="error()">e</button>
    
         </ion-row>
     </div>
     <ion-buttons end>
-        <button ion-button icon-only color="secondary" (click)="goToA3()">
+        <button ion-button icon-only color="secondary" [disabled]="!listo" (click)="goToA3()">
           <ion-icon name="arrow-round-forward"></ion-icon>
         </button>
       </ion-buttons>

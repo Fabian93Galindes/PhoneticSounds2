@@ -13,6 +13,15 @@
   </ion-header>
   
   <ion-content padding class="esta-bg">
+      <h1 class="esta-title2" text-center>{{estadi1.nombre}}</h1>
+      <!-- <ion-list>
+          <ion-item *ngFor="let e of estadi">
+            <h2> letra: {{e.letra}}</h2>
+            <p>Fecha: {{e.fecha}}</p>
+            <p>nivel: {{e.nivel}}</p>
+          </ion-item>    
+        </ion-list> -->
+        
     <ion-row >
       <ion-col col-4 class="esta-col1" text-center>
         Fecha
@@ -25,16 +34,18 @@
       </ion-col>
   
     </ion-row>
-    <ion-row  *ngFor="let u of usuarios">
+    <ion-row  *ngFor="let e of estadi">
+      
       <ion-col col-4 class="esta-col2" text-center>
-        {{u.fecha}}
+        {{e.fecha}}
       </ion-col>
       <ion-col col-4 class="esta-col2" text-center>
-        {{u.letra}}
+        {{e.letra}}
       </ion-col>
       <ion-col col-4 class="esta-col2" text-center>
-        {{p.nivel}}
+        {{e.nivel}}
       </ion-col>
-  
+      
     </ion-row>
+
   </ion-content>
