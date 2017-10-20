@@ -33,33 +33,33 @@ export class EstadisticasPage {
   ionViewDidEnter() {
     this.storage.get('user').then(val =>{
       this.estadi1.nombre = val;
-      this.load2();
+      this.load();
     });
    
 
   }
-  load2(){
-      this.dao.all().then(data =>{
-        this.estadi = data;
-      });
-  }
-  // load(){
-
-  //   this.service.getByOne(this.estadi1)
-  //   .subscribe(res=>{
-  //     if(res.success){
-  //       console.log(res.success);
-
-  //       this.estadi = res.user;
-  //       this.showToast("Cargando...");
-  //     }else{
-  //       console.log(res.success);
-  //       this.showToast("no se cargo estadisticas");
-  //     }
-
-  //   });
-
+  // load2(){
+  //     this.dao.all().then(data =>{
+  //       this.estadi = data;
+  //     });
   // }
+  load(){
+
+    this.service.getByOne(this.estadi1)
+    .subscribe(res=>{
+      if(res.success){
+        console.log(res.success);
+
+        this.estadi = res.user;
+        this.showToast("Cargando...");
+      }else{
+        console.log(res.success);
+        this.showToast("no se cargo estadisticas");
+      }
+
+    });
+
+  }
 
   showToast(msg: string){
     let toast = this.toastCtrl.create({

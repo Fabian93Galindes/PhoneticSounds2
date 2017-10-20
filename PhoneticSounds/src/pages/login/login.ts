@@ -47,11 +47,7 @@ export class LoginPage {
         this.showToast("Cargando...");
         this.storage.set('user',this.usuario.nombre);
         this.storage.set("logged", true);
-        
-        this.estadi1.nombre= this.usuario.nombre;
-        this.loadEstadisticas();
-
-        
+        this.navCtrl.setRoot(TiposPage);   
       }else{
         console.log(res.success);
         this.showToast("Usuario o contraseña erronea");
@@ -72,27 +68,27 @@ export class LoginPage {
     toast.present();  
   }
 
-  loadEstadisticas(){
-    this.service1.getByOne(this.estadi1)
-    .subscribe(res=>{
-      if(res.success){
-        this.estadi = res.user;
-        for (var i = 0; i < this.estadi.length; i++) {
-            this.estadb = new Estadisticadb();
-            this.estadb.nombre = this.estadi[i].nombre;
-            this.estadb.fecha = this.estadi[i].fecha;
-            this.estadb.letra = this.estadi[i].letra;
-            this.estadb.nivel = this.estadi[i].nivel;
-            this.dao.insert(this.estadb);
-            this.navCtrl.setRoot(TiposPage);
-        }
-      }else{
-        console.log(res.success);
-        this.showToast("no se cargaron estadisticas");
-      }
+  // loadEstadisticas(){
+  //   this.service1.getByOne(this.estadi1)
+  //   .subscribe(res=>{
+  //     if(res.success){
+  //       this.estadi = res.user;
+  //       for (var i = 0; i < this.estadi.length; i++) {
+  //           this.estadb = new Estadisticadb();
+  //           this.estadb.nombre = this.estadi[i].nombre;
+  //           this.estadb.fecha = this.estadi[i].fecha;
+  //           this.estadb.letra = this.estadi[i].letra;
+  //           this.estadb.nivel = this.estadi[i].nivel;
+  //           this.dao.insert(this.estadb);
+            
+  //       }
+  //     }else{
+  //       console.log(res.success);
+  //       this.showToast("no se cargaron estadisticas");
+  //     }
 
-    });
-  }
+  //   });
+  // }
 
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-import { Vibration } from '@ionic-native/vibration';
+//import { Vibration } from '@ionic-native/vibration';
 import { TiposPage } from '../tipos/tipos';
 import { VocalA2Page } from '../vocal-a2/vocal-a2';
 import { EstadisticasDaoProvider } from '../../providers/estadisticas-dao/estadisticas-dao'; 
@@ -30,21 +30,21 @@ export class VocalAPage {
   public punto : boolean;
   public punto1 : boolean;
   public punto2 : boolean;
-  public estadis :Estadisticadb;
-  
+  public estadis :Estadistica;
+  //private vibration : Vibration
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public dao: EstadisticasDaoProvider,
     public storage: Storage,
     public service: EstadisticasServicioProvider,
     public toastCtrl: ToastController,
-    private vibration : Vibration
+    
     ) {
       this.cont = 0;
       this.listo = false;
       this.punto = false;
       this.punto1 = false;
       this.punto2 = false;
-      this.estadis = new Estadisticadb();
+      this.estadis = new Estadistica();
 
     }
 
@@ -59,16 +59,16 @@ export class VocalAPage {
     this.playCelebracion= new Audio();
     this.playError= new Audio();
     
-    this.playBien.src = "../assets/song/BIEN01.mp3"; 
-    this.playCelebracion.src =  "../assets/song/CELEBRACION.mp3";
-    this.playError.src =  "../assets/song/ERROR01.mp3";
+    this.playBien.src = "../../assets/song/BIEN01.mp3"; 
+    this.playCelebracion.src =  "../../assets/song/CELEBRACION.mp3";
+    this.playError.src =  "../../assets/song/ERROR01.mp3";
   }
   goToTipos(){
     this.navCtrl.setRoot(TiposPage);
   }
   error(){
     this.playError.play();
-    this.vibration.vibrate(1000);
+    //this.vibration.vibrate(1000);
     this.punto = false;
     this.punto1 = false;
     this.punto2 = false;
@@ -78,12 +78,12 @@ export class VocalAPage {
   bien(){
     if(this.cont<2){
       this.playBien.play();
-      this.vibration.vibrate(500);
+      //this.vibration.vibrate(500);
       this.punto = true;
       this.cont = this.cont + 1;
     }else{
       this.playCelebracion.play();
-      this.vibration.vibrate([500,250,500,250,500]);
+      //this.vibration.vibrate([500,250,500,250,500]);
       this.punto = true;
       this.listo= !this.listo;
     }
@@ -91,12 +91,12 @@ export class VocalAPage {
   bien1(){
     if(this.cont<2){
       this.playBien.play();
-      this.vibration.vibrate(500);
+      //this.vibration.vibrate(500);
       this.punto1 = true;
       this.cont = this.cont + 1;
     }else{
       this.playCelebracion.play();
-      this.vibration.vibrate([500,250,500,250,500]);
+      //this.vibration.vibrate([500,250,500,250,500]);
       this.punto1 = true;
       this.listo= !this.listo;
     }
@@ -104,14 +104,14 @@ export class VocalAPage {
   bien2(){
     if(this.cont<2){
       this.playBien.play();
-      this.vibration.vibrate(500);
+      //this.vibration.vibrate(500);
       
       this.punto2 = true;
       this.cont = this.cont + 1;
       console.log("puntos" + this.cont);
     }else{
       this.playCelebracion.play();
-      this.vibration.vibrate([500,250,500,250,500]);
+      //this.vibration.vibrate([500,250,500,250,500]);
       this.punto2 = true;
       this.listo= !this.listo;
     }
@@ -129,15 +129,13 @@ export class VocalAPage {
       if(res.success){
         console.log(res.success);
         this.showToast("Partida guardada");
-        this.dao.insert(this.estadis)
-        .then(res=> this.navCtrl.setRoot(VocalA2Page));
+        
       }else{
         console.log(res.success);
         this.showToast("no se guardo la partida");
-        this.dao.insert(this.estadis)
-        .then(res=> this.navCtrl.setRoot(VocalA2Page));
         
        }
+       this.navCtrl.setRoot(VocalA2Page);
     
     });
     

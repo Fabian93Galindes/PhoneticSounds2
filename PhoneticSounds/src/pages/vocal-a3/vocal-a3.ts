@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,ToastController } from 'ionic-angular';
 import { TiposPage } from '../tipos/tipos';
 import { VocalA4Page } from '../vocal-a4/vocal-a4';
-
+import { Estadistica,EstadisticasServicioProvider} from '../../providers/estadisticas-servicio/estadisticas-servicio';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the VocalA3Page page.
  *
@@ -27,33 +28,60 @@ export class VocalA3Page {
   public punto2 : boolean;
   public punto3 : boolean;
   //private vibration : Vibration
+  public estadis :Estadistica;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public storage: Storage,
+    public service: EstadisticasServicioProvider,
+    public toastCtrl: ToastController
+      ) {
     this.cont = 0;
     this.listo = false;
     this.punto = false;
     this.punto1 = false;
     this.punto2 = false;
     this.punto3 = false;
+    this.estadis = new Estadistica();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VocalA3Page');
+    this.storage.get('user').then(val =>{
+      this.estadis.nombre = val;
+    });
   }
   ngOnInit(){
     this.playBien = new Audio();
     this.playCelebracion= new Audio();
     this.playError= new Audio();
     
-    this.playBien.src = "../assets/song/BIEN01.mp3"; 
-    this.playCelebracion.src =  "../assets/song/CELEBRACION.mp3";
-    this.playError.src =  "../assets/song/ERROR01.mp3";
+    this.playBien.src = "../../assets/song/BIEN01.mp3"; 
+    this.playCelebracion.src =  "../../assets/song/CELEBRACION.mp3";
+    this.playError.src =  "../../assets/song/ERROR01.mp3";
   }
   goToTipos(){
     this.navCtrl.setRoot(TiposPage);
   }
   goToA4(){
-    this.navCtrl.setRoot(VocalA4Page);
+    
+    this.estadis.fecha = new Date();
+    this.estadis.letra ="A";
+    this.estadis.nivel= 3;
+    
+
+    this.service.insert(this.estadis)
+    .subscribe(res=>{
+      if(res.success){
+        console.log(res.success);
+        this.showToast("Partida guardada");
+        
+      }else{
+        console.log(res.success);
+        this.showToast("no se guardo la partida");
+        
+       }
+       this.navCtrl.setRoot(VocalA4Page);
+    
+    });
   }
   error(){
     this.playError.play();
@@ -121,4 +149,14 @@ export class VocalA3Page {
       this.listo= !this.listo;
     }
   }
+
+  showToast(msg: string){
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();  
+  }
+
+
 }
